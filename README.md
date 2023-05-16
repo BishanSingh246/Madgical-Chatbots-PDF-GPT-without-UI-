@@ -15,5 +15,7 @@ To use this repository, follow these steps:
 
  
 ## Running the Application
-To run the application, open a terminal and type ```python app.py```, then press enter then you need to give input in terminal.
+To run the application, 
+1. In ```VsCODE``` open a terminal and type ```python app.py```, then press enter then you need to give input in terminal. 
+2. In ```Jupyter Notebook``` You can use ```app.ipynb``` file.
 
