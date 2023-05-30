@@ -140,12 +140,13 @@ def question_answer(file,question,openAI_key):
     if openAI_key.strip()=='':
         return '[ERROR]: Please enter you Open AI Key. Get your key here : https://platform.openai.com/account/api-keys'
 
-
-    file_paths = ["./Smart Protect Goal Brochure.pdf", "./Future Wealth Gain Brochure.pdf"]
-    for path in file_paths:
-        if file in path:
-            load_recommender(path)
-            print(path)
+    # file_paths = ["./Smart Protect Goal Brochure.pdf", "./Future Wealth Gain Brochure.pdf"]
+    # for path in file_paths:
+    #     if file in path:
+    #         load_recommender(path)
+    #         print(path)
+    load_recommender(file)
+    print(file)
 
     if question.strip() == '':
         return '[ERROR]: Question field is empty'
@@ -159,9 +160,14 @@ def allQuestion(file):
 
     if file  == None:
         return '[ERROR]: Provide select atleast one option.'
-    if file  == "Smart Protect Goal Brochure":
+    # if file  == "Smart Protect Goal Brochure":
+    #     question = questionOptions1
+    # if file == "Future Wealth Gain Brochure":
+    #     question = questionOptions2
+
+    if file  == "Smart Protect Goal Brochure.pdf":
         question = questionOptions1
-    if file == "Future Wealth Gain Brochure":
+    if file == "Future Wealth Gain Brochure.pdf":
         question = questionOptions2
     
     return question
@@ -169,7 +175,7 @@ def allQuestion(file):
 recommender = SemanticSearch()
 
 openAI_key = input("Please enter your OpenAI Api key: ")
-print(f"\nYour OpenAI Key is: {openAI_key}")
+# print(f"\nYour OpenAI Key is: {openAI_key}")
 
 def selectquestion(files):
     options = ["Select questions from List of Options.","Select to enter a custom question."]
@@ -180,6 +186,7 @@ def selectquestion(files):
     
     print("\nSelect options number")
     selectOption = int(input("Enter Option Number: "))
+    print(f"you selected option number = {selectOption}")
 
     if selectOption == 1:
         print("\n ")
@@ -194,13 +201,27 @@ def selectquestion(files):
     return questions
 
 
-options = ['Smart Protect Goal Brochure', 'Future Wealth Gain Brochure']
+# options = ['Smart Protect Goal Brochure', 'Future Wealth Gain Brochure']
+# def selectFiles(options):
+#     for i in range(len(options)):
+#             print(f"Option {i + 1} is = {options[i]}")
+#     print("\nSelect options number")
+#     filesInput = int(input("Enter Option Number: "))
+#     files = options[filesInput - 1]
+#     return files
+
+options = ['Smart Protect Goal Brochure.pdf', 'Future Wealth Gain Brochure.pdf']
 def selectFiles(options):
-    for i in range(len(options)):
-            print(f"Option {i + 1} is = {options[i]}")
-    print("\nSelect options number")
-    filesInput = int(input("Enter Option Number: "))
-    files = options[filesInput - 1]
+    inputFilePath = input("Enter File Path: ")
+    print(f"Your file path is: {inputFilePath}")
+    print("\n ")
+    inputFilename = os.path.basename(inputFilePath)
+
+    if inputFilename not in options:
+        raise ValueError(f"The input file path '{inputFilename}' is not in the list of available files.")
+
+    files = options[options.index(inputFilename)]
+    print(f"File name is: {files}")
     return files
 
 files = selectFiles(options)
