@@ -13,9 +13,9 @@ To use this repository, follow these steps:
 
 2. Generate Api key from <a href='https://platform.openai.com/account/api-keys'>OpenAI</a>.
 
+3. Please copy the file path of the PDF that you wish to use. You will need to paste it into the input section when executing the code. 
+
  
 ## Running the Application
-To run the application, 
-1. In ```VsCODE``` open a terminal and type ```python app.py```, then press enter then you need to give input in terminal. 
-2. In ```Jupyter Notebook``` You can use ```app.ipynb``` file.
+To run the application in ```Jupyter Notebook``` You can use ```app.ipynb``` file.
 
